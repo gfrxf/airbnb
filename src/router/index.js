@@ -17,7 +17,7 @@ const routes = [
         element:<Home/>
     },
     {
-        path:"/entile",
+        path:"/entire",
         element:<Entire/>
     },
     {
