@@ -8,6 +8,7 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import SeactionHeader from "@/components/section-header";
 import SectionRooms from "@/components/section-rooms";
+import SectionTabs from "@/components/section-tabs";
 
 
 const home = memo(() => {
@@ -18,6 +19,7 @@ const home = memo(() => {
     discountInfo:state.home.discountInfo
   }),shallowEqual)
 
+  const tabNames = discountInfo.dest_address?.map(item => item.name)
 
   /** 派发异步的事件: 发送网络请求 */
   const dispatch = useDispatch()
@@ -31,6 +33,7 @@ const home = memo(() => {
        {/* 折扣数据 */}
        <div className="discount">
         <SeactionHeader title = {discountInfo.title} subtitle = {discountInfo.subtitle}/>
+        <SectionTabs tabNames = {tabNames}/>
         <SectionRooms roomList = {discountInfo.dest_list?.["成都"]} itemWidth = "33.3333%"/>
        </div>
         <HomeSectionV1 infoData = {goodPriceInfo}/>
