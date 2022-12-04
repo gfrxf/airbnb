@@ -4,16 +4,18 @@ import { HomeWrapper } from "./style";
 import HomeBanner from "./c-cpns/home-banner";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
+
+import HomeSectionV1 from "./c-cpns/home-section-v1";
 import SeactionHeader from "@/components/section-header";
-import RoomItem from "@/components/room-item";
-import { Rate } from 'antd';
-import Rating from '@mui/material/Rating';
+import SectionRooms from "@/components/section-rooms";
 
 
 const home = memo(() => {
   /** 从redux中获取数据 */
-  const {goodPriceInfo} = useSelector ((state) => ({
-    goodPriceInfo: state.home.goodPriceInfo
+  const {goodPriceInfo,highScoreInfo,discountInfo} = useSelector ((state) => ({
+    goodPriceInfo: state.home.goodPriceInfo,
+    highScoreInfo:state.home.highScoreInfo,
+    discountInfo:state.home.discountInfo
   }),shallowEqual)
 
 
@@ -26,17 +28,14 @@ const home = memo(() => {
     <HomeWrapper>
       <HomeBanner/>
       <div className="content">
-        <div className="good-price">
-        <SeactionHeader title={goodPriceInfo.title}/>
-      <ul className="room-list">
-        {
-          goodPriceInfo.list?.slice(0,8)?.map(item => {
-            return <RoomItem itemData={item} key={item.id}/>
-          })
-        }
-      </ul>
-        </div>
-
+       {/* 折扣数据 */}
+       <div className="discount">
+        <SeactionHeader title = {discountInfo.title} subtitle = {discountInfo.subtitle}/>
+        <SectionRooms roomList = {discountInfo.dest_list?.["成都"]} itemWidth = "33.3333%"/>
+       </div>
+        <HomeSectionV1 infoData = {goodPriceInfo}/>
+        <HomeSectionV1 infoData = {highScoreInfo}/>
+      
       </div>
       
     </HomeWrapper>
