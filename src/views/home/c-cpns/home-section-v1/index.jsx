@@ -1,3 +1,4 @@
+import SectionFooter from '@/components/seaction-footer'
 import SeactionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
 import propTypes from 'prop-types'
@@ -10,6 +11,7 @@ const HomeSectionV1 = memo((props) => {
    <SectionV1Wrapper>
     <SeactionHeader title={infoData.title} subtitle={infoData.subtitle} />
     <SectionRooms roomList={infoData.list}/>
+    <SectionFooter/>
    </SectionV1Wrapper>
   )
 })
