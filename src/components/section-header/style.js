@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
     color: #222;
+    margin-top: 30px;
   
   .title {
    

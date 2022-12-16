@@ -1,5 +1,6 @@
 import propTypes from 'prop-types'
 import React, { memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FooterWrapper } from './style'
 
 const SectionFooter = memo((props) => {
@@ -9,9 +10,14 @@ const SectionFooter = memo((props) => {
     if(name){
         showMessage = `显示更多${name}房源`
     }
+      /** 事件处理的逻辑 */
+      const navigate = useNavigate()
+    function moreClickHandle(){
+        navigate("/entire")
+    }
   return (
    <FooterWrapper color={name ? "#00848A": "#000"}>
-    <div className="info">
+    <div className="info" onClick={moreClickHandle}>
         <span className="text">{showMessage}</span>
     </div>
    </FooterWrapper>

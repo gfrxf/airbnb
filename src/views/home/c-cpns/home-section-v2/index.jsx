@@ -25,6 +25,7 @@ const HomeSectionV2 = memo((props) => {
     <SeactionHeader title={infoData.title} subtitle={infoData.subtitle}/>
     <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}/>
     <SectionRooms roomList={infoData.dest_list?.[name] } itemWidth = "33.3333%"/>
+    
     <SectionFooter name={name}/>
    </SectionV2Wrapper>
   )

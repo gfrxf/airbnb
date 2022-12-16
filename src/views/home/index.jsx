@@ -11,6 +11,8 @@ import HomeSectionV1 from "./c-cpns/home-section-v1";
 // import SectionTabs from "@/components/section-tabs";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import {isEmpty} from '@/utils'
+import HomeLangfor from "./c-cpns/home-langfor";
+import HomeSectionV3 from "./c-cpns/home-section-v3";
 
 
 const home = memo(() => {
@@ -18,11 +20,13 @@ const home = memo(() => {
 
 
   /** 从redux中获取数据 */
-  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo} = useSelector ((state) => ({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo,plusInfo} = useSelector ((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo:state.home.highScoreInfo,
     discountInfo:state.home.discountInfo,
-    recommendInfo:state.home.recommendInfo
+    recommendInfo:state.home.recommendInfo,
+    longforInfo:state.home.longforInfo,
+    plusInfo:state.home.plusInfo
   }),shallowEqual)
 
 
@@ -45,8 +49,13 @@ const home = memo(() => {
        </div> */}
        { isEmpty(discountInfo) && <HomeSectionV2 infoData = {discountInfo}/> }
        {isEmpty(recommendInfo) && <HomeSectionV2 infoData = {recommendInfo}/>}
+
+
+       {isEmpty(longforInfo) && <HomeLangfor infoData = {longforInfo}/>}
+      
        {isEmpty(goodPriceInfo) && <HomeSectionV1 infoData = {goodPriceInfo}/>} 
        {isEmpty(highScoreInfo) &&   <HomeSectionV1 infoData = {highScoreInfo}/>}
+       {isEmpty(plusInfo) && <HomeSectionV3 infoData = {plusInfo}/>}
       
       
       </div>
