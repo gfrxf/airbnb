@@ -24,7 +24,39 @@ export const ItemWrapper = styled.div`
       height: 100%;
     }
   }
+.swiper{
+  position: relative;
+  cursor: pointer;
+  &:hover{
+    .control{
+      display: flex;
+    }
+  }
+  .control{
+    color: #fff;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: none;
+    justify-content: space-between;
+    bottom: 0;
 
+  }
+  .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83px;
+    height: 100%;
+    background: linear-gradient(to left,transparent 0%,rgba(0,0,0,0.25) 100%);
+    &.right{
+      background: linear-gradient(to right,transparent 0%,rgba(0,0,0,0.25) 100%);
+
+    }
+  }
+}
   .desc {
     margin: 10px 0 5px;
     font-size: 12px;
