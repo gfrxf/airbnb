@@ -13,13 +13,15 @@ import 'antd/dist/reset.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Suspense fallback="loading">
+  
     <Provider store={store}>
+      <Suspense fallback="loading">
       <ThemeProvider theme={theme}>
         <HashRouter>
           <App />
         </HashRouter>
       </ThemeProvider>
+      </Suspense>
     </Provider>
-  </Suspense>
+ 
 );

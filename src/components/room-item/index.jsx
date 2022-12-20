@@ -13,7 +13,7 @@ const RoomItem = memo((props) => {
   const [selectIndex, setSelectIndex] = useState(0);
 
   // 点击时间处理函数
-  function controlClickHandle(isRight = true) {
+  function controlClickHandle(isRight = true,event) {
     isRight ? slideRef.current.next() : slideRef.current.prev();
 
     let newIndex = isRight ? selectIndex + 1 : selectIndex - 1;
@@ -21,6 +21,8 @@ const RoomItem = memo((props) => {
     if (newIndex < 0) newIndex = length - 1;
     if (newIndex > length - 1) newIndex = 0;
     setSelectIndex(newIndex);
+    // 阻止时间冒泡
+    event.stopPropagation()
   }
   const pictureEl = (
     <div className="cover">
@@ -32,13 +34,13 @@ const RoomItem = memo((props) => {
     <div className="control">
       <div
         className="btn left"
-        onClick={(e) => controlClickHandle(false)}
+        onClick={(e) => controlClickHandle(false,e)}
       >
         <IconArrowLeft width="30" heigt="30" />
       </div>
       <div
         className="btn right"
-        onClick={(e) => controlClickHandle(true)}
+        onClick={(e) => controlClickHandle(true,e)}
       >
         <IconArrowRight width="30" heigt="30" />
       </div>
@@ -58,7 +60,7 @@ const RoomItem = memo((props) => {
         })}
       </Indicator>
     </div>
-    <Carousel dots={false} autoplay={true} ref={slideRef}>
+    <Carousel dots={false} autoplay={false} ref={slideRef}>
       {itemData?.picture_urls?.map((item) => {
         return (
           <div className="cover" key={item}>

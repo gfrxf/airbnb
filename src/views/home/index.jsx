@@ -13,6 +13,8 @@ import HomeSectionV2 from "./c-cpns/home-section-v2";
 import {isEmpty} from '@/utils'
 import HomeLangfor from "./c-cpns/home-langfor";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
+
 
 
 const home = memo(() => {
@@ -36,9 +38,11 @@ const home = memo(() => {
   const dispatch = useDispatch()
   useEffect( () => {
     dispatch(fetchHomeDataAction())
+    dispatch(changeHeaderConfigAction({isFixed: true, topAlpha: true }))
   },[dispatch])
   return (
     <HomeWrapper>
+     
       <HomeBanner/>
       <div className="content">
        {/* 折扣数据 */}
